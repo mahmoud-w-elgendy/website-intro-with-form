@@ -1,0 +1,203 @@
+:root {
+    --main-transition: 0.3s;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+   background-color: hsl(0, 100%, 74%);
+   min-height: 100vh;
+}
+@media (max-width: 499px) {
+    body {
+        background-image: url('images/bg-intro-mobile.png');
+    }
+}
+@media (min-width: 500px) {
+    body {
+        background-image: url('images/bg-intro-desktop.png');
+    }
+}
+main .content {
+    color: white;
+    transform: translateX(-30px);
+    opacity: 0;
+    animation: side-appear 0.8s ease-out forwards;
+}
+main .content h1 {
+    margin-bottom: 20px;
+}
+main .form .form-caption {
+    background-color: hsl(248, 32%, 49%);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px hsla(249, 18%, 23%, 0.301);
+    margin-bottom: 20px;
+}
+main .form .form-caption strong {
+    font-weight: 700;
+}
+main .form form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 5px hsla(249, 18%, 23%, 0.301);
+}
+main .form form .input {
+    position: relative;
+}
+main .form form .input span {
+    position: absolute;
+    color: hsl(0, 100%, 74%);
+    display: none;
+    bottom: 20px;
+    right: 0;
+    font-size: 0.7rem;
+    font-style: italic;
+    transform: translateX(-30px);
+    opacity: 0;
+}
+main .form form .input span::before {
+    content: url('images/icon-error.svg');
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    transform: translateY(-50%) scale(0);
+    animation: pop-up 0.5s ease-out 0.5s forwards;
+}
+@keyframes pop-up {
+    0% {
+        transform: translateY(-50%)  scale(0);
+    }
+    100% {
+        transform: translateY(-50%)  scale(1);
+    }
+}
+main .form form input {
+    height: 52px;
+    padding: 0 25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    width: 100%;
+}
+main .form form input:focus {
+    outline: none;
+}
+main .form form input:not(input[type='button']) {
+    color: hsl(249, 10%, 26%);
+    border: 1.5px solid hsl(246, 25%, 77%);
+    caret-color: hsl(249, 10%, 26%);
+    position: relative;
+}
+main .form form input:not(input[type='button'])::placeholder{
+    color: hsl(247, 8%, 55%);
+    font-weight: 600;
+}
+main .form form input:not(input[type='button']):focus {
+    border-color: hsl(249, 10%, 26%);
+}
+main .form form input:not(input[type='button']).failed {
+    color: hsl(0, 100%, 74%);
+    border-color: currentColor;
+    border-width: 2px;
+    animation: margin-down 0.5s ease-out forwards;
+}
+@keyframes margin-down {
+    0% {
+        margin-bottom: 20px;
+    } 100% {
+        margin-bottom: 40px;
+    }
+}
+main .form form input:not(input[type='button']).failed + span {
+    display: block;
+    animation: side-appear 0.5s ease-out 0.5s forwards;
+}
+@keyframes side-appear {
+    0% {
+        transform: translateX(-30px);
+        opacity: 0;
+    } 100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+main .form form input[type='button'] {
+    background-color: hsl(154, 59%, 51%);
+    border: none;
+    border-bottom: 5px solid hsl(154, 56%, 44%);
+    color: white;
+    text-transform: uppercase;
+    transition: var(--main-transition);
+    cursor: pointer;
+}
+main .form form input[type='button']:hover {
+    opacity: 0.7;
+}
+main .form form .terms {
+    font-size: 0.7rem;
+    text-align: center;
+    color: hsl(248, 14%, 66%);
+}
+main .form form .terms a {
+    text-decoration: none;
+    color: hsl(0, 100%, 74%);
+    font-weight: 600;
+}
+main .form form .terms a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 1199px) {
+    main {
+        display: flex;
+        flex-direction: column;
+        padding: 80px 20px;
+    }
+    main .content {
+        text-align: center;
+    }
+    main .content h1 {
+        font-size: 1.75rem;
+        padding: 0 40px;
+    }
+    main .content p {
+        font-size: 17px;
+        margin-bottom: 60px;
+    }
+    main .form .form-caption {
+        padding: 20px 75px;
+        text-align: center;
+    }
+    main .form form {
+        padding: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    body {
+        display: flex; justify-content: center; align-items: center; 
+    }
+    main {
+        display: grid; grid-template-columns: 1fr 535px; grid-gap: 60px; align-items: center;
+        max-width: 1110px;
+    }
+    main .form {
+        width: 535px;
+    }
+    main .content h1 {
+        font-size: 2.75rem;
+        line-height: 50px;
+    }
+    main .form .form-caption {
+        height: 55px;
+        display: flex; justify-content: center; align-items: center;
+        font-size: 0.9rem;
+    }
+    main .form form {
+        min-height: 470px;
+        padding: 36px;
+    }
+}
